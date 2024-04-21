@@ -88,6 +88,35 @@
         <div class="square black-square"> </div>
         <div class="clear-float"> </div>
     </div>
+    <div id='board'>
+        <div id='info-board'>
+            <table id='score-board'>
+                <tr>
+                    <th id='black-name'>♛ Black ♛</th>
+                    <th id='white-name'>♕ White ♕</th>
+                </tr>
+                <tr>
+                    <td id='black-score'></td>
+                    <td id='white-score'></td>
+                </tr>
+            </table>
+            <div id='cancel'>
+                <button id='cancel-btn'>
+                    Cancel Selection
+                </button>
+            </div>
+        </div>
+        <div id='wrong-move' class='invisible'>
+            <h1>Wrong Move !</h1>
+        </div>
+    </div>
+
+    <section>
+        <div id="winner" onclick="winner_off()">
+            <div id="textwin">Text check</div>
+        </div>
+    </section>
+
     
     <script src="SRC/JS/Checkers.js"></script>
 </body>
