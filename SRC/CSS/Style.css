@@ -4,8 +4,11 @@ body {
   padding: 0;
 }
 
+.board-row {
+  display: flex;
+}
+
 .square {
-  float: left;
   width: 80px;
   height: 80px;
 }
@@ -17,6 +20,7 @@ body {
 .black-square {
   background-color: #000000;
 }
+
 
 #score-board {
   border-collapse: collapse;

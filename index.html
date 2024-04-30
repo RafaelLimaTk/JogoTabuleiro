@@ -7,87 +7,43 @@
     <link rel="stylesheet" href="SRC/CSS/Style.css">
 </head>
 <body>
-    <div id='board_game'>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="clear-float"> </div>
+    <div id="board_game"></div>
 
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="clear-float"> </div>
-
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="clear-float"> </div>
-
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="clear-float"> </div>
-
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="clear-float"> </div>
-
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="clear-float"> </div>
-
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="clear-float"> </div>
-
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="square white-square"> </div>
-        <div class="square black-square"> </div>
-        <div class="clear-float"> </div>
-    </div>
+    <script>
+        const numRows = 8;
+        const numCols = 8;
+    
+        
+        const boardContainer = document.getElementById("board_game");
+    
+        
+        for (let i = 0; i < numRows; i++) {
+            
+            const row = document.createElement("div");
+            row.classList.add("board-row");
+    
+            
+            for (let j = 0; j < numCols; j++) {
+                
+                const square = document.createElement("div");
+                square.classList.add("square");
+    
+                
+                if ((i + j) % 2 === 0) {
+                    square.classList.add("black-square");
+                } else {
+                    square.classList.add("white-square");
+                }
+    
+                
+                row.appendChild(square);
+            }
+    
+            
+            boardContainer.appendChild(row);
+        }
+    </script>
+    
     <div id='board'>
         <div id='info-board'>
             <table id='score-board'>
