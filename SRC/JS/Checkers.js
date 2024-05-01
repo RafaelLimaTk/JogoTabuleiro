@@ -218,14 +218,59 @@ const show_moves = (player) => {
 }
 
 const check_if_winner = () => {
-    if (scores[current_team] > 1) {
+    if (scores[current_team] >= 9) {
         document.getElementById("textwin").innerHTML = "The winner is " + current_team;
         winner_on();
     }
 }
+const winner_on = () => {
+    document.getElementById("winner").style.display = "block";
+}
+
+const winner_off = () => {
+    document.getElementById("winner").style.display = "none";
+    location.reload();
+}
+
+
+const set_current_player = (team) => {
+    let players = document.getElementsByClassName(TEAM2[team].CLASS_NAME);
+    let enemies = document.getElementsByClassName(TEAM2[TEAM2[team].ENNEMY_NAME].CLASS_NAME);
+
+    for (const enemy of enemies) {
+        enemy.classList.remove('current-team');
+    }
+
+    squares.forEach((row) => {
+        row.forEach((square) => {
+            if (square.classList.contains('black-square')) {
+                square.children[0].onclick = () => false;
+                square.onclick = () => false;
+            }
+        })
+    })
+
+    for (const player of players) {
+        player.classList.add('current-team');
+        player.onclick = () => {
+            cancel_btn.classList.remove('invisible');
+            document.getElementById('wrong-move').classList.add('invisible');
+            show_moves(player);
+        }
+    }
+
+    document.getElementById(TEAM2[team].HIGHLIGHT_CLASS_NAME).classList.add('highligh-name');
+    document.getElementById(TEAM2[TEAM2[team].ENNEMY_NAME].HIGHLIGHT_CLASS_NAME).classList.remove('highligh-name');
+
+    document.getElementById('black-score').innerHTML = scores[TEAM2.BLACK.NAME];
+    document.getElementById('white-score').innerHTML = scores[TEAM2.WHITE.NAME];
+
+    check_if_winner();
+    current_team = team;
+}
 const main = () => {
     init_board();
-    // set_current_player(TEAM2.BLACK.NAME);
+    set_current_player(TEAM2.BLACK.NAME);
 
 }
 
