@@ -184,7 +184,45 @@ const move_player_to_square = (player, square) => {
     square.children[0].classList.add(TEAM2[current_team].CLASS_NAME);
     square.children[0].classList.remove('invisible');
 }
+const get_victim_id = (from_id, to_id) => {
+    let from_row = parseInt(from_id[0]);
+    let from_column = parseInt(from_id[1]);
+    let to_row = parseInt(to_id[0]);
+    let to_column = parseInt(to_id[1]);
 
+    return `${get_avg(from_row, to_row)}${get_avg(from_column, to_column)}`;
+}
+
+const get_avg = (a, b) => {
+    return (a + b) / 2;
+}
+
+const show_moves = (player) => {
+    hide_moves();
+
+    let row = parseInt(player.parentElement.id[0]);
+    let column = parseInt(player.parentElement.id[1]);
+    player.classList.add('clicked');
+
+    let potential_destinations = get_potential_destinations(row, column, current_team);
+
+    potential_destinations.forEach(square => {
+        square.classList.add('potential');
+        square.onclick = () => {
+            move_player_to_square(player, square);
+            set_current_player(TEAM2[current_team].ENNEMY_NAME);
+            cancel_btn.classList.add('invisible');
+            document.getElementById('wrong-move').classList.add('invisible');
+        };
+    });
+}
+
+const check_if_winner = () => {
+    if (scores[current_team] > 1) {
+        document.getElementById("textwin").innerHTML = "The winner is " + current_team;
+        winner_on();
+    }
+}
 const main = () => {
     init_board();
     // set_current_player(TEAM2.BLACK.NAME);
